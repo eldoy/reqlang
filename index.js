@@ -1,26 +1,25 @@
-// Find dynamic routes
-function getRoute(req, routes, name) {
-  for (const route in routes) {
-    const pattern = route
-      .split('/')
-      .map(x => x[0] == '_' ? '[^\/]+' : x)
-      .join('/')
-
-    const match = new RegExp(`^\/?${pattern}$`).test(name)
-    if (!match) continue
-
-    // Add params
-    route.split('/').forEach((val, i) => {
-      if (val.startsWith('_')) {
-        req.params[val.slice(1)] = name.split('/')[i]
-      }
-    })
-    return routes[route]
-  }
+// Get language from path
+function getLang(path) {
+  const match = path.match(/^\/([a-z]{2})\//)
+  if (match) return match[1]
 }
 
-module.exports = function(req, routes) {
-  if (!req.params) req.params = {}
-  const name = `${req.method.toLowerCase()}#${req.pathname.slice(1)}`
-  req.route = routes[name] || getRoute(req, routes, name)
+// Set up language
+module.exports = function(req, defaultLang = 'en') {
+  const cookieLang = req.cookie('lang')
+  const lang = req.params?.lang
+    || getLang(req.pathname)
+    || cookieLang
+    || defaultLang
+
+  // Update lang cookie
+  if (cookieLang) {
+    if (cookieLang != lang) {
+      req.cookie('lang', lang)
+
+    } else if(cookieLang == defaultLang) {
+      req.cookie('lang', null)
+    }
+  }
+  req.lang = lang
 }

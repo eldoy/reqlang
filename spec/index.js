@@ -3,7 +3,7 @@ const test = require('spekky')
 async function run() {
   console.time('Test run')
 
-  await test('reqroute')
+  await test('reqlang')
 
   console.timeEnd('Test run')
 }

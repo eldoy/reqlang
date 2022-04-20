@@ -1,14 +1,14 @@
 {
-  "name": "reqroute",
+  "name": "reqlang",
   "version": "0.1.0",
-  "description": "HTTP Request router",
+  "description": "HTTP Request language",
   "main": "index.js",
   "scripts": {
     "test": "nodemon spec/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eldoy/reqroute"
+    "url": "https://github.com/eldoy/reqlang"
   },
   "author": "Vidar Eldøy <vidar@eldoy.com>",
   "license": "ISC",
