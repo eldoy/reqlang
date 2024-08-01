@@ -1,10 +1,11 @@
-const assert = require('assert')
-const lang = require('../../index.js')
+var assert = require('assert')
+var lang = require('../../index.js')
 
-const it = {}, x = {}
+var it = {},
+  x = {}
 
-it['should set default lang'] = async function() {
-  const req = {
+it['should set default lang'] = async function () {
+  var req = {
     pathname: '/hello',
     cookie: () => {}
   }
@@ -14,8 +15,8 @@ it['should set default lang'] = async function() {
   assert.deepEqual(req.lang, 'no')
 }
 
-it['should set lang from params'] = async function() {
-  const req = {
+it['should set lang from params'] = async function () {
+  var req = {
     pathname: '/hello',
     cookie: () => {},
     params: {
@@ -26,8 +27,8 @@ it['should set lang from params'] = async function() {
   assert.deepEqual(req.lang, 'se')
 }
 
-it['should set lang from cookie'] = async function() {
-  const req = {
+it['should set lang from cookie'] = async function () {
+  var req = {
     pathname: '/hello',
     cookie: () => {
       return 'fi'
@@ -37,8 +38,8 @@ it['should set lang from cookie'] = async function() {
   assert.deepEqual(req.lang, 'fi')
 }
 
-it['should set lang from path'] = async function() {
-  const req = {
+it['should set lang from path'] = async function () {
+  var req = {
     pathname: '/es/hello',
     cookie: () => {}
   }

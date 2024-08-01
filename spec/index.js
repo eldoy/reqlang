@@ -1,4 +1,4 @@
-const test = require('spekky')
+var test = require('spekky')
 
 async function run() {
   console.time('Test run')
