@@ -19,13 +19,13 @@ The language of the request is looked up in this order:
 5. Fallback to English (`en`)
 
 ```js
-const http = require('http')
-const rekvest = require('rekvest')
-const wcookie = require('wcookie')
-const lang = require('reqlang')
+var http = require('http')
+var rekvest = require('rekvest')
+var wcookie = require('wcookie')
+var lang = require('reqlang')
 
 // NodeJS web server
-const server = http.createServer(function(req, res) {
+var server = http.createServer(function(req, res) {
 
   // Add pathname to request object
   rekvest(req)
@@ -44,3 +44,5 @@ const server = http.createServer(function(req, res) {
 ```
 
 ISC Licensed. Enjoy!
+
+Created by [Eldøy Projects](https://eldoy.com)
